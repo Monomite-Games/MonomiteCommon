@@ -1,0 +1,17 @@
+{
+  "name": "com.monomite.common",
+  "version": "1.0.0",
+  "displayName": "Monomite Common + Utility",
+  "description": "Common and utility assets for Monomite Games projects",
+  "unity": "2020.1",
+  "unityRelease": "6f1",
+ "keywords": [
+    "utils",
+    "common"
+  ],
+  "author": {
+    "name": "Monomite Games",
+    "email": "unity@example.com",
+    "url": "https://www.instagram.com/monomitegames/"
+  }
+}
