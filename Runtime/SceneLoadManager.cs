@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace Monomite.Common
 {
-    public abstract class SceneLoadManager : MonoBehaviour
+    public class SceneLoadManager : MonoBehaviour
     {
         #region Singleton
         public static SceneLoadManager Instance
@@ -31,8 +31,19 @@ namespace Monomite.Common
 
         private int CurrentBuildIndex;
 
-        protected abstract void BeforeEachLoad();
-        protected abstract void AfterEachLoad();
+        protected virtual void BeforeEachLoad()
+        {
+            
+        }
+        protected virtual void AfterEachLoad()
+        {
+            
+        }
+        
+        public void LoadScene(int sceneBuildIndex)
+        {
+            LoadLevel(sceneBuildIndex);
+        }
 
         public void RestartScene()
         {
