@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Monomite.Common.Common
+namespace Monomite.Common
 {
     public class UnityMainThread : MonoBehaviour
     {

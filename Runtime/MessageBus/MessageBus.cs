@@ -1,21 +1,16 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Monomite.Common.MessageBus
 {
-    public abstract class MessageBus<E, S> : IMessageBus<E, S>
+    public abstract class MessageBus<E, S> : ScriptableObject
     {
-        private readonly IMessageHandler<E> EventHandler;
-        private readonly IMessageHandler<S> StateHandler;
+        private readonly MessageHandler<E> EventHandler = new ActionMessageHandler<E>();
+        private readonly MessageHandler<S> StateHandler = new ActionMessageHandler<S>();
 
-        internal MessageBus(IMessageHandler<E> eventHandler, IMessageHandler<S> stateHandler)
+        public void EmitEvent(E message)
         {
-            EventHandler = eventHandler;
-            StateHandler = stateHandler;
-        }
-
-        public void EmitEvent(E data)
-        {
-            EventHandler.Emit(data);
+            EventHandler.Emit(message);
         }
 
         public void AddEventListener(Action<E> listener)
@@ -33,9 +28,9 @@ namespace Monomite.Common.MessageBus
             EventHandler.RemoveAllListeners();
         }
 
-        public void EmitState(S data)
+        public void EmitState(S message)
         {
-            StateHandler.Emit(data);
+            StateHandler.Emit(message);
         }
 
         public void AddStateListener(Action<S> listener)
